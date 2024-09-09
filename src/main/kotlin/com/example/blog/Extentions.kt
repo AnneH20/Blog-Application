@@ -1,4 +1,4 @@
-package org.example.blog
+package com.example.blog
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatterBuilder

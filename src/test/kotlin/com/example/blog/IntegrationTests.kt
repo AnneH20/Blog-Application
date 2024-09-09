@@ -1,4 +1,4 @@
-package org.example.blog
+package com.example.blog
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll

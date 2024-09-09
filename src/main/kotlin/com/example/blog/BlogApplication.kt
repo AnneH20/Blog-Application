@@ -1,4 +1,4 @@
-package org.example.blog
+package com.example.blog
 
 import org.springframework.boot.Banner
 import org.springframework.boot.autoconfigure.SpringBootApplication
