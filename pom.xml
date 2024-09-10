@@ -8,11 +8,11 @@
         <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.example</groupId>
+    <groupId>com.example</groupId>
     <artifactId>blog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Blog</name>
-    <description>Blog</description>
+    <description>Demo Spring Boot Project</description>
     <url/>
     <licenses>
         <license/>

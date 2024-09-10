@@ -4,6 +4,7 @@ import org.springframework.boot.Banner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
+// @EnableConfigurationProperties(BlogProperties::class)
 @SpringBootApplication
 class BlogApplication
 
