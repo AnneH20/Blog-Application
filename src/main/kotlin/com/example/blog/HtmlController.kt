@@ -6,18 +6,22 @@ import org.springframework.ui.Model
 import org.springframework.ui.set
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.server.ResponseStatusException
 
 @Controller
 class HtmlController(
-    private val repository: ArticleRepository,
+    private val articleRepository: ArticleRepository,
     private val properties: BlogProperties,
+    private val userRepository: UserRepository,
 ) {
     @GetMapping("/")
     fun blog(model: Model): String {
         model["title"] = properties.title
         model["banner"] = properties.banner
-        model["articles"] = repository.findAllByOrderByAddedAtDesc().map { it.render() }
+        model["articles"] = articleRepository.findAllByOrderByAddedAtDesc().map { it.render() }
         return "blog"
     }
 
@@ -27,13 +31,41 @@ class HtmlController(
         model: Model,
     ): String {
         val article =
-            repository
+            articleRepository
                 .findBySlug(slug)
                 ?.render()
                 ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article does not exist")
         model["title"] = article.title
         model["article"] = article
         return "article"
+    }
+
+    @GetMapping("/article/new")
+    fun showForm(): String {
+        return "newArticleForm" // Mustache template for the form
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    fun submitForm(
+        @RequestParam title: String,
+        @RequestParam headline: String,
+        @RequestParam content: String,
+        @RequestParam author: String,
+    ): String {
+        val user: User =
+            userRepository.findByLogin(author)
+                ?: throw IllegalArgumentException("Author not found")
+
+        val article =
+            Article(
+                title = title,
+                headline = headline,
+                content = content,
+                author = user,
+            )
+        articleRepository.save(article)
+        return "redirect:/" // Redirect after form submission
     }
 
     fun Article.render() =
