@@ -9,7 +9,16 @@ import jakarta.persistence.Table
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "articles")
+@Table(name = "USERS")
+data class User(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
+    var username: String,
+    var firstName: String,
+    var lastName: String,
+)
+
+@Entity
+@Table(name = "ARTICLES")
 data class Article(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
     var title: String,
@@ -18,13 +27,4 @@ data class Article(
     @ManyToOne var author: User,
     var slug: String = title.toSlug(),
     var addedAt: LocalDateTime = LocalDateTime.now(),
-)
-
-@Entity
-@Table(name = "users")
-data class User(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
-    var username: String,
-    var firstName: String,
-    var lastName: String,
 )
