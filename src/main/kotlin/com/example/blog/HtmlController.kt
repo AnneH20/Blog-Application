@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.server.ResponseStatusException
 
 @Controller
@@ -17,7 +16,7 @@ class HtmlController(
     private val properties: BlogProperties,
     private val userRepository: UserRepository,
 ) {
-    @GetMapping("/")
+    @GetMapping("/home")
     fun blog(model: Model): String {
         model["title"] = properties.title
         model["banner"] = properties.banner
@@ -47,7 +46,6 @@ class HtmlController(
     }
 
     @PostMapping("/article/new")
-    @ResponseStatus(HttpStatus.CREATED)
     fun submitNewArticleForm(
         @RequestParam title: String,
         @RequestParam headline: String,
@@ -66,7 +64,7 @@ class HtmlController(
                 author = user,
             )
         articleRepository.save(article)
-        return "redirect:/" // Redirect after form submission
+        return "redirect:/home"
     }
 
     @GetMapping("/user/new")
@@ -87,7 +85,7 @@ class HtmlController(
                 lastName = lastname,
             )
         userRepository.save(user)
-        return "redirect:/" // Redirect after form submission
+        return "redirect:/home" // Redirect after form submission
     }
 
     fun Article.render() =
