@@ -1,29 +1,69 @@
-{{> header}}
-
-<h1>{{title}}</h1>
-
-<div class="articles">
-
-    {{#banner.title}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .banner {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .banner-title {
+            margin: 0;
+            font-size: 24px;
+        }
+        .article-header {
+            margin-bottom: 15px;
+        }
+        .article-title a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .article-title a:hover {
+            text-decoration: underline;
+        }
+        .article-meta {
+            font-size: 14px;
+            color: #555;
+        }
+        .article-description {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    {{#banner}}
         <section>
             <header class="banner">
-                <h2 class="banner-title">{{banner.title}}</h2>
+                <h2 class="banner-title">{{title}}</h2>
+                <div class="banner-content">{{content}}</div>
             </header>
-            <div class="banner-content">{{banner.content}}</div>
         </section>
-    {{/banner.title}}
+    {{/banner}}
 
-    {{#articles}}
-        <section>
-            <header class="article-header">
-                <h2 class="article-title"><a href="/article/{{slug}}">{{title}}</a></h2>
-                <div class="article-meta">By  <strong>{{author.firstname}}</strong>, on <strong>{{addedAt}}</strong></div>
-            </header>
-            <div class="article-description">
-                {{headline}}
-            </div>
-        </section>
-    {{/articles}}
+    <div class="articles">
+        {{#articles}}
+            <section>
+                <header class="article-header">
+                    <h2 class="article-title"><a href="/article/{{slug}}">{{title}}</a></h2>
+                    <div class="article-meta">By <strong>{{author.firstName}} {{author.lastName}}</strong>, on <strong>{{addedAt}}</strong></div>
+                </header>
+                <div class="article-description">
+                    {{headline}}
+                </div>
+            </section>
+        {{/articles}}
+    </div>
 </div>
-
-{{> footer}}
+</body>
+</html>
