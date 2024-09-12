@@ -35,26 +35,27 @@ class HtmlController(
                 .findBySlug(slug)
                 ?.render()
                 ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article does not exist")
+        println("Rendering article: $article")
         model["title"] = article.title
         model["article"] = article
         return "article"
     }
 
     @GetMapping("/article/new")
-    fun showForm(): String {
+    fun showNewArticleForm(): String {
         return "newArticleForm" // Mustache template for the form
     }
 
     @PostMapping("/article/new")
     @ResponseStatus(HttpStatus.CREATED)
-    fun submitForm(
+    fun submitNewArticleForm(
         @RequestParam title: String,
         @RequestParam headline: String,
         @RequestParam content: String,
-        @RequestParam author: String,
+        @RequestParam username: String,
     ): String {
         val user: User =
-            userRepository.findByLogin(author)
+            userRepository.findByUsername(username)
                 ?: throw IllegalArgumentException("Author not found")
 
         val article =
@@ -68,13 +69,34 @@ class HtmlController(
         return "redirect:/" // Redirect after form submission
     }
 
+    @GetMapping("/user/new")
+    fun showUserForm(): String {
+        return "newUserForm" // Mustache template for the form
+    }
+
+    @PostMapping("/user/new")
+    fun submitNewUserForm(
+        @RequestParam username: String,
+        @RequestParam firstname: String,
+        @RequestParam lastname: String,
+    ): String {
+        val user =
+            User(
+                username = username,
+                firstName = firstname,
+                lastName = lastname,
+            )
+        userRepository.save(user)
+        return "redirect:/" // Redirect after form submission
+    }
+
     fun Article.render() =
         RenderedArticle(
             slug,
             title,
             headline,
             content,
-            author,
+            RenderedUser(author.firstName, author.lastName),
             addedAt.format(),
         )
 
@@ -83,7 +105,12 @@ class HtmlController(
         val title: String,
         val headline: String,
         val content: String,
-        val author: User,
+        val author: RenderedUser,
         val addedAt: String,
+    )
+
+    data class RenderedUser(
+        val firstName: String,
+        val lastName: String,
     )
 }

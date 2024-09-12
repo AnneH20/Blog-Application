@@ -1,16 +1,47 @@
-{{> header}}
-
-<section class="article">
-    <header class="article-header">
-        <h1 class="article-title">{{article.title}}</h1>
-        <p class="article-meta">By  <strong>{{article.author.firstname}}</strong>, on <strong>{{article.addedAt}}</strong></p>
-    </header>
-
-    <div class="article-description">
-        {{article.headline}}
-
-        {{article.content}}
-    </div>
-</section>
-
-{{> footer}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .article-header {
+            margin-bottom: 15px;
+        }
+        .article-title a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .article-title a:hover {
+            text-decoration: underline;
+        }
+        .article-meta {
+            font-size: 14px;
+            color: #555;
+        }
+        .article-content {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <section>
+        <header class="article-header">
+            <h2 class="article-title">{{title}}</h2>
+            <div class="article-meta">By <strong>{{article.author.firstName}} {{article.author.lastName}}</strong>, on <strong>{{article.addedAt}}</strong></div>
+        </header>
+        <div class="article-content">
+            <h3>{{article.headline}}</h3>
+            <p>{{article.content}}</p>
+        </div>
+    </section>
+</div>
+</body>
+</html>

@@ -29,8 +29,8 @@ class UserController(
     @GetMapping("/")
     fun findAll() = repository.findAll()
 
-    @GetMapping("/{login}")
+    @GetMapping("/{username}")
     fun findOne(
-        @PathVariable login: String,
-    ) = repository.findByLogin(login) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This user does not exist")
+        @PathVariable username: String,
+    ) = repository.findByUsername(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This user does not exist")
 }
