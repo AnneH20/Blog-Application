@@ -45,7 +45,7 @@ class HtmlController(
         return "newArticleForm" // Mustache template for the form
     }
 
-    @PostMapping
+    @PostMapping("/article/new")
     @ResponseStatus(HttpStatus.CREATED)
     fun submitForm(
         @RequestParam title: String,
