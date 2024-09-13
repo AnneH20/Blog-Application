@@ -24,6 +24,20 @@ class HtmlController(
         return "blog"
     }
 
+    @GetMapping("/articles")
+    fun getArticles(model: Model): String {
+        model["banner"] = properties.banner
+        model["articles"] = articleRepository.findAllByOrderByAddedAtDesc().map { it.render() }
+        return "articles"
+    }
+
+    @GetMapping("/users")
+    fun getUsers(model: Model): String {
+        model["banner"] = properties.banner
+        model["users"] = userRepository.findAll()
+        return "users"
+    }
+
     @GetMapping("/article/{slug}")
     fun article(
         @PathVariable slug: String,
@@ -35,15 +49,14 @@ class HtmlController(
                 ?.render()
                 ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article does not exist")
         println("Rendering article: $article")
+        model["banner"] = properties.banner
         model["title"] = article.title
         model["article"] = article
         return "article"
     }
 
     @GetMapping("/article/new")
-    fun showNewArticleForm(): String {
-        return "newArticleForm" // Mustache template for the form
-    }
+    fun showNewArticleForm(): String = "newArticleForm"
 
     @PostMapping("/article/new")
     fun submitNewArticleForm(
@@ -68,9 +81,7 @@ class HtmlController(
     }
 
     @GetMapping("/user/new")
-    fun showUserForm(): String {
-        return "newUserForm" // Mustache template for the form
-    }
+    fun showUserForm(): String = "newUserForm"
 
     @PostMapping("/user/new")
     fun submitNewUserForm(
@@ -85,7 +96,7 @@ class HtmlController(
                 lastName = lastname,
             )
         userRepository.save(user)
-        return "redirect:/home" // Redirect after form submission
+        return "redirect:/home"
     }
 
     fun Article.render() =

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{title}}</title>
+    <title>Articles</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,23 +20,6 @@
         .banner-title {
             margin: 0;
             font-size: 24px;
-        }
-        .article-header {
-            margin-bottom: 15px;
-        }
-        .article-title a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-        .article-title a:hover {
-            text-decoration: underline;
-        }
-        .article-meta {
-            font-size: 14px;
-            color: #555;
-        }
-        .article-description {
-            margin: 10px 0;
         }
         .nav-tabs {
             display: flex;
@@ -58,27 +41,64 @@
         .nav-tabs .active {
             background-color: #007BFF;
         }
+        .article-header {
+            margin-bottom: 15px;
+        }
+        .article-title a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .article-title a:hover {
+            text-decoration: underline;
+        }
+        .article-meta {
+            font-size: 14px;
+            color: #555;
+        }
+        .article-description {
+            margin: 10px 0;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        .button-container button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-
 <div class="container">
+    <!-- Banner -->
     {{#banner}}
         <section>
             <header class="banner">
-                <h2 class="banner-title">{{title}}</h2>
-                <div class="banner-content">{{content}}</div>
+                <h2 class="banner-title">{{banner.title}}</h2>
+                <div class="banner-content">{{banner.content}}</div>
             </header>
         </section>
     {{/banner}}
 
     <!-- Navigation Tabs -->
     <div class="nav-tabs">
-        <a href="/home" class="active">Home</a>
-        <a href="/articles">Articles</a>
+        <a href="/home">Home</a>
+        <a href="/articles" class="active">Articles</a>
         <a href="/users">Users</a>
     </div>
 
+    <h1>All Articles</h1>
+    <div class="button-container">
+        <button onclick="window.location.href='/article/new';">Create New Article</button>
+    </div>
     <div class="articles">
         {{#articles}}
             <section>
@@ -93,6 +113,5 @@
         {{/articles}}
     </div>
 </div>
-
 </body>
 </html>

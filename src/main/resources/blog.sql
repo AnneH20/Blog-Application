@@ -1,6 +1,3 @@
-DROP TABLE IF EXISTS ARTICLES;
-DROP TABLE IF EXISTS USERS;
-
 CREATE TABLE IF NOT EXISTS users (
      id BIGINT AUTO_INCREMENT PRIMARY KEY,
      username VARCHAR(60) NOT NULL,
@@ -15,6 +12,6 @@ CREATE TABLE IF NOT EXISTS articles (
     content TEXT NOT NULL,
     slug VARCHAR(255),
     added_at TIMESTAMP,
-    user_id BIGINT,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    author_id BIGINT,
+    FOREIGN KEY (author_id) REFERENCES users(id)
 );

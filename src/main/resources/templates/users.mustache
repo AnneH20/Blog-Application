@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{title}}</title>
+    <title>Users</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,23 +20,6 @@
         .banner-title {
             margin: 0;
             font-size: 24px;
-        }
-        .article-header {
-            margin-bottom: 15px;
-        }
-        .article-title a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-        .article-title a:hover {
-            text-decoration: underline;
-        }
-        .article-meta {
-            font-size: 14px;
-            color: #555;
-        }
-        .article-description {
-            margin: 10px 0;
         }
         .nav-tabs {
             display: flex;
@@ -58,10 +41,38 @@
         .nav-tabs .active {
             background-color: #007BFF;
         }
+        .user-header {
+            margin-bottom: 15px;
+        }
+        .username {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .user-meta {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        .button-container button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-
 <div class="container">
     {{#banner}}
         <section>
@@ -72,27 +83,26 @@
         </section>
     {{/banner}}
 
-    <!-- Navigation Tabs -->
     <div class="nav-tabs">
-        <a href="/home" class="active">Home</a>
+        <a href="/home">Home</a>
         <a href="/articles">Articles</a>
-        <a href="/users">Users</a>
+        <a href="/users" class="active">Users</a>
     </div>
 
-    <div class="articles">
-        {{#articles}}
+    <h1>All Users</h1>
+    <div class="button-container">
+        <button onclick="window.location.href='/user/new';">Create New User</button>
+    </div>
+    <div class="users">
+        {{#users}}
             <section>
-                <header class="article-header">
-                    <h2 class="article-title"><a href="/article/{{slug}}">{{title}}</a></h2>
-                    <div class="article-meta">By <strong>{{author.firstName}} {{author.lastName}}</strong>, on <strong>{{addedAt}}</strong></div>
+                <header class="user-header">
+                    <div class="username">{{username}}</div>
+                    <div class="user-meta">{{firstName}} {{lastName}}</div>
                 </header>
-                <div class="article-description">
-                    {{headline}}
-                </div>
             </section>
-        {{/articles}}
+        {{/users}}
     </div>
 </div>
-
 </body>
 </html>
