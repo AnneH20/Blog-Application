@@ -20,7 +20,7 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 - `http://localhost:8080/article/new` --> Create a new article
 - `http://localhost:8080/article/{title-of-article}` --> View a specific article
 
-### TODO: 
+## TODO: 
 
 1. Add a way to delete users/articles
 2. Fix duplicate tables being created in the database
@@ -28,11 +28,14 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
    - `users` (writing)
    - `ARTICLES` (get rid of creating)
    - `articles` (writing)
+   - Also figure out how to not have the DB edit every change to the code (md files, 
+   anything not related to the DB, etc.)
 3. Clean up webpage look
    - Edit the format of the articles
    - Make the date/time stamp look more clean
    - Create a better looking banner
-4. Make the code clean (according to the rules of clean code + look at rt-domain-pro, etc. to get a better idea)
+4. Make the code clean (according to the rules of clean code + look at rt-domain-pro, etc.
+to get a better idea)
    - Separate repositories
    - Separate controllers
      - Make the controller RESTful controllers??
