@@ -27,6 +27,11 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 - `http://localhost:8080/article/delete` --> Delete an article
 - `http://localhost:8080/article/{title-of-article}` --> View a specific article (use hyphens, - , between words)
 
+### Database information: 
+
+- URL: `jdbc:postgresql://localhost:5432/blogDB`
+- Username: blog
+
 ## TODO: 
 
 1. Fix duplicate tables being created in the database
@@ -56,3 +61,26 @@ to get a better idea)
    - Must fill out all fields to create a new user/write a new article
    - Must have a valid username to write an article (case-sensitive)
 6. Add a search bar to search for articles
+
+### Notes:
+
+Postgres commands:
+
+`brew instsall postgresql` --> install Postgresql using Brew
+
+`createuser --interactive` --> create a new user
+
+`createdb blogdb` --> create a new database
+
+`psql -d blogdb` --> connect to the database
+
+`psql -U blog -d blogDB -f src/main/resources/blog.sql` --> run the schema.sql file
+
+`\d [table name]` --> show specific table
+
+`\dt` --> show all tables
+
+`\q` --> quit the database
+
+`\l` --> list all databases
+
