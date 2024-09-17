@@ -48,10 +48,10 @@ to get a better idea)
      - ~~Make the controller RESTful controller~~ **Cannot do because of the HTML, can test REST controller in Postman**
    - Separate entities (to models?)
 4. Create tests that cover most of the code
-  - Postman tests
-  - Unit tests
-  - Integration tests
+   - Postman tests
+   - Unit tests
+   - Integration tests
 5. Add verification
-  - Must have a valid username to delete it (case sensitive)
-  - Must fill out all fields to create a new user/write a new article
-  - Must have a valid username to write an article (case sensitive)
+   - Must have a valid username to delete it (case sensitive)
+   - Must fill out all fields to create a new user/write a new article
+   - Must have a valid username to write an article (case sensitive)
