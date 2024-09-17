@@ -1,6 +1,6 @@
 # README.md for Blog Application
 
-I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/guides/tutorials/spring-boot-kotlin)
+I am following a Spring Boot + Kotlin tutorial found [here](https://spring.io/guides/tutorials/spring-boot-kotlin){:target="_blank"}
 
 ## Things I've added to the tutorial
 
