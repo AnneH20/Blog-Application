@@ -13,16 +13,22 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 
 ## Navigation Links when running the application
 
-- `http://localhost:8080/home` --> Home page
+- `http://localhost:8080/` **OR** `http://localhost:8080/home` --> Home Page
 - `http://localhost:8080/users` --> View all users
 - `http://localhost:8080/articles` --> View all articles
 - `http://localhost:8080/user/new` --> Create a new user
+- `http://localhost:8080/user/delete` --> Delete a user
 - `http://localhost:8080/article/new` --> Create a new article
-- `http://localhost:8080/article/{title-of-article}` --> View a specific article
+- `http://localhost:8080/article/delete` --> Delete an article
+- `http://localhost:8080/article/{title-of-article}` --> View a specific article (use hyphens, - , between words)
 
 ## TODO: 
 
-1. Add a way to delete users/articles
+1. ~~Add a way to delete users/articles~~ **COMPLETED**
+   - Added the pages to display "no articles" or "no users" if there are none
+   - Edited the home page URL to display when URL was "/" or "/home"
+   - Removed the headline field and replaced it with the first 5 words of th article. It will not be show when the single
+   article page is displayed (only as a sort of description)
 2. Fix duplicate tables being created in the database
    - `USERS` (get rid of creating)
    - `users` (writing)
@@ -30,6 +36,7 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
    - `articles` (writing)
    - Also figure out how to not have the DB edit every change to the code (md files, 
    anything not related to the DB, etc.)
+   - Migrate to MySQL DB
 3. Clean up webpage look
    - Edit the format of the articles
    - Make the date/time stamp look more clean
@@ -38,7 +45,7 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 to get a better idea)
    - Separate repositories
    - Separate controllers
-     - Make the controller RESTful controllers??
+     - ~~Make the controller RESTful controller~~ **Cannot do because of the HTML, can test REST controller in Postman**
    - Separate entities (to models?)
    - Create tests that cover most of the code
      - Postman tests
