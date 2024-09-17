@@ -1,22 +1,22 @@
 package com.example.blog
 
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatterBuilder
-import java.time.temporal.ChronoField
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-fun LocalDateTime.format(): String = this.format(englishDateFormatter)
+fun LocalDateTime.format(): String {
+    val monthFormatter = DateTimeFormatter.ofPattern("MMMM")
+    val dayFormatter = DateTimeFormatter.ofPattern("d")
+    val yearFormatter = DateTimeFormatter.ofPattern("yyyy")
 
-private val daysLookup = (1..31).associate { it.toLong() to getOrdinal(it) }
+    val month = this.format(monthFormatter)
+    val day = this.format(dayFormatter).toInt()
+    val year = this.format(yearFormatter)
 
-private val englishDateFormatter =
-    DateTimeFormatterBuilder()
-        .appendPattern("yyyy-MM-dd")
-        .appendLiteral(" ")
-        .appendText(ChronoField.DAY_OF_MONTH, daysLookup)
-        .appendLiteral(" ")
-        .appendPattern("yyyy")
-        .toFormatter(Locale.ENGLISH)
+    val ordinalDay = getOrdinal(day)
+
+    return "$month $ordinalDay, $year"
+}
 
 private fun getOrdinal(n: Int) =
     when {
