@@ -42,7 +42,6 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 to get a better idea)
    - Separate repositories
    - Separate controllers
-     - ~~Make the controller RESTful controller~~ **Cannot do because of the HTML, can test REST controller in Postman**
    - Separate entities (to models?)
 2. Create tests that cover most of the code
    - Postman tests
