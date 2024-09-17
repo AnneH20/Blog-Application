@@ -82,8 +82,7 @@
     {{#banner}}
         <section>
             <header class="banner">
-                <h2 class="banner-title">{{banner.title}}</h2>
-                <div class="banner-content">{{banner.content}}</div>
+                <h2 class="banner-title">Articles</h2>
             </header>
         </section>
     {{/banner}}
@@ -98,6 +97,7 @@
     <h1>All Articles</h1>
     <div class="button-container">
         <button onclick="window.location.href='/article/new';">Create New Article</button>
+        <button onclick="window.location.href='/article/delete';">Delete Article</button>
     </div>
     <div class="articles">
         {{#articles}}
@@ -110,6 +110,10 @@
                     {{headline}}
                 </div>
             </section>
+        {{/articles}}
+
+        {{^articles}}
+            <p>No articles found.</p>
         {{/articles}}
     </div>
 </div>

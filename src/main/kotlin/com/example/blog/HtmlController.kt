@@ -16,7 +16,7 @@ class HtmlController(
     private val properties: BlogProperties,
     private val userRepository: UserRepository,
 ) {
-    @GetMapping("/home")
+    @GetMapping("/", "/home")
     fun blog(model: Model): String {
         model["title"] = properties.title
         model["banner"] = properties.banner
@@ -61,7 +61,6 @@ class HtmlController(
     @PostMapping("/article/new")
     fun submitNewArticleForm(
         @RequestParam title: String,
-        @RequestParam headline: String,
         @RequestParam content: String,
         @RequestParam username: String,
     ): String {
@@ -72,7 +71,6 @@ class HtmlController(
         val article =
             Article(
                 title = title,
-                headline = headline,
                 content = content,
                 author = user,
             )
@@ -99,12 +97,40 @@ class HtmlController(
         return "redirect:/home"
     }
 
+    @GetMapping("/user/delete")
+    fun deleteUserForm(): String = "deleteUserForm"
+
+    @PostMapping("/user/delete")
+    fun deleteUser(
+        @RequestParam username: String,
+    ): String {
+        val user: User =
+            userRepository.findByUsername(username)
+                ?: throw IllegalArgumentException("User not found")
+        userRepository.delete(user)
+        return "redirect:/users"
+    }
+
+    @GetMapping("/article/delete")
+    fun deleteArticleForm(): String = "deleteArticleForm"
+
+    @PostMapping("/article/delete")
+    fun deleteArticle(
+        @RequestParam title: String,
+    ): String {
+        val article: Article =
+            articleRepository.findByTitleIgnoreCase(title)
+                ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article does not exist")
+        articleRepository.delete(article)
+        return "redirect:/articles"
+    }
+
     fun Article.render() =
         RenderedArticle(
             slug,
             title,
-            headline,
             content,
+            getFirstFiveWords(content),
             RenderedUser(author.firstName, author.lastName),
             addedAt.format(),
         )
@@ -112,8 +138,8 @@ class HtmlController(
     data class RenderedArticle(
         val slug: String,
         val title: String,
-        val headline: String,
         val content: String,
+        val headline: String,
         val author: RenderedUser,
         val addedAt: String,
     )
@@ -122,4 +148,7 @@ class HtmlController(
         val firstName: String,
         val lastName: String,
     )
+
+    fun getFirstFiveWords(content: String): String =
+        content.split(" ").take(5).joinToString(" ") + if (content.split(" ").size > 5) "..." else ""
 }

@@ -62,14 +62,11 @@
 </head>
 <body>
 <div class="container">
-    {{#banner}}
-        <section>
-            <header class="banner">
-                <h2 class="banner-title">{{title}}</h2>
-                <div class="banner-content">{{content}}</div>
-            </header>
-        </section>
-    {{/banner}}
+    <section>
+        <header class="banner">
+            <h2 class="banner-title">{{title}}</h2>
+        </header>
+    </section>
 
     <!-- Navigation Tabs -->
     <div class="nav-tabs">
@@ -84,7 +81,6 @@
             <div class="article-meta">By <strong>{{article.author.firstName}} {{article.author.lastName}}</strong>, on <strong>{{article.addedAt}}</strong></div>
         </header>
         <div class="article-content">
-            <h3>{{article.headline}}</h3>
             <p>{{article.content}}</p>
         </div>
     </section>
