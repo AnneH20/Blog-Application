@@ -58,6 +58,13 @@
         .nav-tabs .active {
             background-color: #007BFF;
         }
+        .search-bar {
+            margin-left: auto;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -74,10 +81,16 @@
 
     <!-- Navigation Tabs -->
     <div class="nav-tabs">
-        <a href="/home" class="active">Home</a>
-        <a href="/articles">Articles</a>
-        <a href="/users">Users</a>
+        <a href="/home" class="{{#isHome}}active{{/isHome}}">Home</a>
+        <a href="/articles" class="{{#isArticles}}active{{/isArticles}}">Articles</a>
+        <a href="/users" class="{{#isUsers}}active{{/isUsers}}">Users</a>
+        <form action="/search" method="get" style="display: flex; align-items: center;">
+            <input type="text" name="query" placeholder="Search..." class="search-bar">
+            <button type="submit">Search</button>
+        </form>
     </div>
+
+    <div id="search-results" class="search-results"></div>
 
     <div class="articles">
         {{#articles}}
@@ -97,6 +110,45 @@
         {{/articles}}
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('search-bar');
+        const searchResultsContainer = document.getElementById('search-results');
+
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value;
+
+            if (query.length > 0) {
+                fetch(`/search?query=${encodeURIComponent(query)}&page=${window.location.pathname.split('/')[1]}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            searchResultsContainer.innerHTML = '';
+
+                            if (data.articles) {
+                                data.articles.forEach(article => {
+                                    const articleElement = document.createElement('div');
+                                    articleElement.classList.add('search-result-item');
+                                    articleElement.innerHTML = `<h4><a href="/article/${article.slug}">${article.title}</a></h4><p>${article.content.substring(0, 100)}...</p>`;
+                                    searchResultsContainer.appendChild(articleElement);
+                                });
+                            }
+
+                            if (data.users) {
+                                data.users.forEach(user => {
+                                    const userElement = document.createElement('div');
+                                    userElement.classList.add('search-result-item');
+                                    userElement.innerHTML = `<p>${user.firstName} ${user.lastName}</p>`;
+                                    searchResultsContainer.appendChild(userElement);
+                                });
+                            }
+                        });
+            } else {
+                searchResultsContainer.innerHTML = '';
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

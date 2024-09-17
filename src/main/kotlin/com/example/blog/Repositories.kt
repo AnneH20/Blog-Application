@@ -8,8 +8,14 @@ interface ArticleRepository : CrudRepository<Article, Long> {
     fun findByTitleIgnoreCase(title: String): Article?
 
     fun findAllByOrderByAddedAtDesc(): Iterable<Article>
+
+    fun findByTitleContainingIgnoreCase(query: String): List<Article>
+
+    fun findByContentContainingIgnoreCase(query: String): List<Article>
 }
 
 interface UserRepository : CrudRepository<User, Long> {
     fun findByUsername(username: String): User?
+
+    fun findByUsernameContainingIgnoreCase(query: String): List<User>
 }
