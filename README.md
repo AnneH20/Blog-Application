@@ -9,7 +9,7 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 3. Delete a user page + button to navigate to that page
 4. Delete an article page + button to navigate to that page
 5. View all users - Displays "no users" if users are 0
-6. View all articles - Dislays "no articles" if articles are 0
+6. View all articles - Displays "no articles" if articles are 0
 7. Navigation bar on all pages
 8. Banner to show on all pages
 9. Home Page displays on `/` or `/home`
@@ -19,7 +19,7 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 
 ## Navigation Links when running the application
 
-`http://localhost:8080` --> Home Page
+`http://localhost:8080/` --> Home Page
 
 
 - `/home` --> Alternate Way to get to Home Page
@@ -27,8 +27,8 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 - `/articles` --> View all articles
 - `/user/new` --> Create a new user
 - `user/delete` --> Delete a user
-- `article/new` --> Create a new article
-- `article/delete` --> Delete an article
+- `/article/new` --> Create a new article
+- `/article/delete` --> Delete an article
 - `/article/{title-of-article}` --> View a specific article (use hyphens, - , between words)
 
 ### Database information: 
@@ -37,25 +37,22 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 - Username: blog
 
 ## TODO:
-1. Clean up webpage look
-   - Edit the format of the articles
-   - Make the date/time stamp look more clean
-   - Create a better looking banner
-2. Make the code clean (according to the rules of clean code + look at rt-domain-pro, etc.
+
+1. Make the code clean (according to the rules of clean code + look at rt-domain-pro, etc.
 to get a better idea)
    - Separate repositories
    - Separate controllers
      - ~~Make the controller RESTful controller~~ **Cannot do because of the HTML, can test REST controller in Postman**
    - Separate entities (to models?)
-3. Create tests that cover most of the code
+2. Create tests that cover most of the code
    - Postman tests
    - Unit tests
    - Integration tests
-4. Add verification
+3. Add verification
    - Must have a valid username to delete it (case-sensitive)
    - Must fill out all fields to create a new user/write a new article
    - Must have a valid username to write an article (case-sensitive)
-5. Add a search bar to search for articles
+4. Add a search bar to search for articles (Will take some time to do)
 
 ### Notes:
 
