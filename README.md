@@ -52,6 +52,7 @@ to get a better idea)
    - Unit tests
    - Integration tests
 5. Add verification
-   - Must have a valid username to delete it (case sensitive)
+   - Must have a valid username to delete it (case-sensitive)
    - Must fill out all fields to create a new user/write a new article
-   - Must have a valid username to write an article (case sensitive)
+   - Must have a valid username to write an article (case-sensitive)
+6. Add a search bar to search for articles

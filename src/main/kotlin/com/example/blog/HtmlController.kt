@@ -75,7 +75,7 @@ class HtmlController(
                 author = user,
             )
         articleRepository.save(article)
-        return "redirect:/home"
+        return "redirect:/articles"
     }
 
     @GetMapping("/user/new")
@@ -94,7 +94,7 @@ class HtmlController(
                 lastName = lastname,
             )
         userRepository.save(user)
-        return "redirect:/home"
+        return "redirect:/users"
     }
 
     @GetMapping("/user/delete")
