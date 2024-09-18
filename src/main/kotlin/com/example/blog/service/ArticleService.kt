@@ -1,6 +1,6 @@
 package com.example.blog.service
 
-import com.example.blog.model.ArticleDTO.Article
+import com.example.blog.model.Article
 import com.example.blog.repository.ArticleRepository
 import com.example.blog.repository.UserRepository
 import org.springframework.http.HttpStatus

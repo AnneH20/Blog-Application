@@ -1,6 +1,6 @@
 package com.example.blog.service
 
-import com.example.blog.model.UserDTO.User
+import com.example.blog.model.User
 import com.example.blog.repository.UserRepository
 import org.springframework.stereotype.Service
 

@@ -2,7 +2,7 @@ package com.example.blog.controller
 
 import com.example.blog.BlogProperties
 import com.example.blog.format
-import com.example.blog.model.ArticleDTO.Article
+import com.example.blog.model.Article
 import com.example.blog.service.ArticleService
 import com.example.blog.service.UserService
 import org.springframework.stereotype.Controller
