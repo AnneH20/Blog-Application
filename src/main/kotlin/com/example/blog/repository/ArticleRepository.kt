@@ -1,5 +1,6 @@
-package com.example.blog
+package com.example.blog.repository
 
+import com.example.blog.model.ArticleDTO.Article
 import org.springframework.data.repository.CrudRepository
 
 interface ArticleRepository : CrudRepository<Article, Long> {
@@ -8,8 +9,4 @@ interface ArticleRepository : CrudRepository<Article, Long> {
     fun findByTitleIgnoreCase(title: String): Article?
 
     fun findAllByOrderByAddedAtDesc(): Iterable<Article>
-}
-
-interface UserRepository : CrudRepository<User, Long> {
-    fun findByUsername(username: String): User?
 }

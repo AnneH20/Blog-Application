@@ -1,5 +1,7 @@
-package com.example.blog
+package com.example.blog.controller
 
+import com.example.blog.repository.ArticleRepository
+import com.example.blog.repository.UserRepository
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
