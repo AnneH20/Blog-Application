@@ -2,6 +2,10 @@
 
 I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/guides/tutorials/spring-boot-kotlin)
 
+Realized I'm building a Spring MVC (Model, View, Controller) application not a RESTful Application.
+
+Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-example
+
 ## Things I've added to the tutorial
 
 1. Create a new user page + button to navigate to that page
@@ -13,9 +17,11 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 7. Navigation bar on all pages
 8. Banner to show on all pages
 9. Home Page displays on `/` or `/home`
-10. The "headline" field is now the article description
-    - First 5 words of an article - If less than 5 words, display no description
+10. The `headline` field has been renamed as the article's `description`
+    - Display the first 5 words of an article in the description
+    - If less than 5 words, display no description
 11. Migrated the project from H2 to Postgres (I hope!)
+12. Refactored to create `repository`, `service`, `model`, and `controller` packages
 
 ## Navigation Links when running the application
 
@@ -38,20 +44,15 @@ I am following a Spring Boot + Kotlin tutorial (found here https://spring.io/gui
 
 ## TODO:
 
-1. Make the code clean (according to the rules of clean code + look at rt-domain-pro, etc.
-to get a better idea)
-   - Separate repositories
-   - Separate controllers
-   - Separate entities (to models?)
-2. Create tests that cover most of the code
+1. Create tests that cover most of the code
    - Postman tests
    - Unit tests
    - Integration tests
-3. Add verification
+2. Add verification
    - Must have a valid username to delete it (case-sensitive)
    - Must fill out all fields to create a new user/write a new article
    - Must have a valid username to write an article (case-sensitive)
-4. Add a search bar to search for articles (Will take some time to do)
+3. Add a search bar to search for articles (Will take some time to do)
 
 ### Notes:
 
