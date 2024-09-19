@@ -23,6 +23,7 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
     - If less than 5 words, display no description
 11. Migrated the project from H2 to Postgres (I hope!)
 12. Refactored to create `repository`, `service`, `model`, and `controller` packages
+13. Added validation for deleting a user/article (must have a valid username/title to delete)
 
 </details>
 
