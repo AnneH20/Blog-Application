@@ -55,7 +55,8 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 
 ### Notes:
 
-Postgres commands:
+<details>
+<summary>Postgres Commands</summary>
 
 `brew instsall postgresql` --> install Postgresql using Brew
 
@@ -75,3 +76,4 @@ Postgres commands:
 
 `\l` --> list all databases
 
+</details>
