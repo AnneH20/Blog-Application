@@ -1,6 +1,6 @@
 package com.example.blog.service
 
-import com.example.blog.model.User
+import com.example.blog.model.UserDo
 import com.example.blog.repository.UserRepository
 import org.springframework.stereotype.Service
 
@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service
 class UserService(
     private val userRepository: UserRepository,
 ) {
-    fun findAllUsers(): Iterable<User> = userRepository.findAll()
+    fun findAllUsers(): Iterable<UserDo> = userRepository.findAll()
 
     fun createUser(
         username: String,
         firstName: String,
         lastName: String,
-    ): User {
+    ): UserDo {
         val user =
-            User(
+            UserDo(
                 username = username,
                 firstName = firstName,
                 lastName = lastName,

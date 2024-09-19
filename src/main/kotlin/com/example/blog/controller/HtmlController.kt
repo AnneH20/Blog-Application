@@ -1,8 +1,7 @@
 package com.example.blog.controller
 
 import com.example.blog.BlogProperties
-import com.example.blog.format
-import com.example.blog.model.Article
+import com.example.blog.render
 import com.example.blog.service.ArticleService
 import com.example.blog.service.UserService
 import org.springframework.stereotype.Controller
@@ -100,31 +99,4 @@ class HtmlController(
         articleService.deleteArticleByTitle(title)
         return "redirect:/articles"
     }
-
-    fun Article.render() =
-        RenderedArticle(
-            slug,
-            title,
-            content,
-            getFirstFiveWords(content),
-            RenderedUser(author.firstName, author.lastName),
-            addedAt.format(),
-        )
-
-    data class RenderedArticle(
-        val slug: String,
-        val title: String,
-        val content: String,
-        val description: String,
-        val author: RenderedUser,
-        val addedAt: String,
-    )
-
-    data class RenderedUser(
-        val firstName: String,
-        val lastName: String,
-    )
-
-    fun getFirstFiveWords(content: String): String =
-        content.split(" ").take(5).joinToString(" ") + if (content.split(" ").size > 5) "..." else ""
 }

@@ -1,5 +1,8 @@
 package com.example.blog
 
+import com.example.blog.model.ArticleDo
+import com.example.blog.model.RenderedArticleDTO
+import com.example.blog.model.RenderedUserDTO
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -34,3 +37,16 @@ fun String.toSlug() =
         .split(" ")
         .joinToString("-")
         .replace("-+".toRegex(), "-")
+
+fun ArticleDo.render() =
+    RenderedArticleDTO(
+        slug,
+        title,
+        content,
+        getFirstFiveWords(content),
+        RenderedUserDTO(author.firstName, author.lastName),
+        addedAt.format(),
+    )
+
+fun getFirstFiveWords(content: String): String =
+    content.split(" ").take(5).joinToString(" ") + if (content.split(" ").size > 5) "..." else ""

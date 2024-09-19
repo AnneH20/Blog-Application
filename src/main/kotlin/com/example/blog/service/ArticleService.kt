@@ -1,6 +1,6 @@
 package com.example.blog.service
 
-import com.example.blog.model.Article
+import com.example.blog.model.ArticleDo
 import com.example.blog.repository.ArticleRepository
 import com.example.blog.repository.UserRepository
 import org.springframework.http.HttpStatus
@@ -12,9 +12,9 @@ class ArticleService(
     private val articleRepository: ArticleRepository,
     private val userRepository: UserRepository,
 ) {
-    fun findAllArticles(): Iterable<Article> = articleRepository.findAllByOrderByAddedAtDesc()
+    fun findAllArticles(): Iterable<ArticleDo> = articleRepository.findAllByOrderByAddedAtDesc()
 
-    fun findArticleBySlug(slug: String): Article =
+    fun findArticleBySlug(slug: String): ArticleDo =
         articleRepository.findBySlug(slug)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article does not exist")
 
@@ -22,13 +22,13 @@ class ArticleService(
         title: String,
         content: String,
         username: String,
-    ): Article {
+    ): ArticleDo {
         val author =
             userRepository.findByUsername(username)
                 ?: throw IllegalArgumentException("Author not found")
 
         val article =
-            Article(
+            ArticleDo(
                 title = title,
                 content = content,
                 author = author,
