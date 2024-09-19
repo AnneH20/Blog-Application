@@ -37,10 +37,13 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 - `/article/delete` --> Delete an article
 - `/article/{slug}` --> View a specific article (use hyphens, - , between words)
 
-### Database information: 
+<details>
+<summary>Database information</summary>
 
 - URL: `jdbc:postgresql://localhost:5432/blogDB`
 - Username: blog
+
+</details>
 
 ## TODO:
 
