@@ -6,7 +6,8 @@ Realized I'm building a Spring MVC (Model, View, Controller) application not a R
 
 Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-example
 
-## Things I've added to the tutorial
+<details>
+<summary>Things I've Added to the Tutorial</summary>
 
 1. Create a new user page + button to navigate to that page
 2. Create a new article + button to navigate to that page
@@ -22,6 +23,9 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
     - If less than 5 words, display no description
 11. Migrated the project from H2 to Postgres (I hope!)
 12. Refactored to create `repository`, `service`, `model`, and `controller` packages
+
+</details>
+
 
 ## Navigation Links when running the application
 
@@ -44,6 +48,7 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 - Username: blog
 
 </details>
+
 
 ## TODO:
 
@@ -69,7 +74,7 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 >
 > `psql -d blogdb` --> connect to the database
 >
-> `psql -U blog -d blogDB -f src/main/resources/blog.sql` --> run the schema.sql file
+> `psql -U blog -d blogDB -f src/main/resources/blog.sql` --> run the blog.sql file
 >
 > `\d [table name]` --> show specific table
 >
