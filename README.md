@@ -32,7 +32,7 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 - `/users` --> View all users
 - `/articles` --> View all articles
 - `/user/new` --> Create a new user
-- `user/delete` --> Delete a user
+- `/user/delete` --> Delete a user
 - `/article/new` --> Create a new article
 - `/article/delete` --> Delete an article
 - `/article/{slug}` --> View a specific article (use hyphens, - , between words)
