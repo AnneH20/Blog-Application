@@ -53,27 +53,27 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
    - Must have a valid username to write an article (case-sensitive)
 3. Add a search bar to search for articles (Will take some time to do)
 
-### Notes:
-
-<details>
-<summary>Postgres Commands</summary>
-
-`brew instsall postgresql` --> install Postgresql using Brew
-
-`createuser --interactive` --> create a new user
-
-`createdb blogdb` --> create a new database
-
-`psql -d blogdb` --> connect to the database
-
-`psql -U blog -d blogDB -f src/main/resources/blog.sql` --> run the schema.sql file
-
-`\d [table name]` --> show specific table
-
-`\dt` --> show all tables
-
-`\q` --> quit the database
-
-`\l` --> list all databases
-
-</details>
+> [!NOTE]
+>
+> <details>
+> <summary>Postgres Commands</summary>
+>
+> `brew instsall postgresql` --> install Postgresql using Brew
+>
+> `createuser --interactive` --> create a new user
+>
+> `createdb blogdb` --> create a new database
+>
+> `psql -d blogdb` --> connect to the database
+>
+> `psql -U blog -d blogDB -f src/main/resources/blog.sql` --> run the schema.sql file
+>
+> `\d [table name]` --> show specific table
+>
+> `\dt` --> show all tables
+>
+> `\q` --> quit the database
+>
+> `\l` --> list all databases
+>
+> </details>
