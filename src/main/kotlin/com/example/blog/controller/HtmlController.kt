@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
 @Controller
 class HtmlController(
@@ -84,10 +85,15 @@ class HtmlController(
     @PostMapping("/user/delete")
     fun deleteUser(
         @RequestParam username: String,
-    ): String {
-        userService.deleteUserByUsername(username)
-        return "redirect:/users"
-    }
+        redirectAttributes: RedirectAttributes,
+    ): String =
+        try {
+            userService.deleteUserByUsername(username)
+            "redirect:/users"
+        } catch (e: IllegalArgumentException) {
+            redirectAttributes.addAttribute("error", e.message)
+            "redirect:/user/delete"
+        }
 
     @GetMapping("/article/delete")
     fun deleteArticleForm(): String = "deleteArticleForm"
@@ -95,8 +101,13 @@ class HtmlController(
     @PostMapping("/article/delete")
     fun deleteArticle(
         @RequestParam title: String,
-    ): String {
-        articleService.deleteArticleByTitle(title)
-        return "redirect:/articles"
-    }
+        redirectAttributes: RedirectAttributes,
+    ): String =
+        try {
+            articleService.deleteArticleByTitle(title)
+            "redirect:/articles"
+        } catch (e: IllegalArgumentException) {
+            redirectAttributes.addAttribute("error", e.message)
+            "redirect:/article/delete"
+        }
 }

@@ -39,7 +39,7 @@ class ArticleService(
     fun deleteArticleByTitle(title: String) {
         val article =
             articleRepository.findByTitleIgnoreCase(title)
-                ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article does not exist")
+                ?: throw IllegalArgumentException("Article not found")
         articleRepository.delete(article)
     }
 }

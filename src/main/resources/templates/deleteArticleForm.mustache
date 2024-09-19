@@ -65,6 +65,15 @@
         .form-group button:hover {
             background-color: #0056b3;
         }
+        #error-popup button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -92,5 +101,39 @@
         </div>
     </form>
 </div>
+
+<script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    function showErrorPopup(message) {
+        // Display the popup with a close button
+        const popup = document.createElement('div');
+        popup.style.position = 'fixed';
+        popup.style.left = '50%';
+        popup.style.top = '50%';
+        popup.style.transform = 'translate(-50%, -50%)';
+        popup.style.backgroundColor = '#f8d7da';
+        popup.style.color = '#721c24';
+        popup.style.padding = '20px';
+        popup.style.border = '1px solid #f5c6cb';
+        popup.style.borderRadius = '5px';
+        popup.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        popup.style.zIndex = '1000';
+        popup.innerHTML = `
+                <strong>Error:</strong> ${message}
+            `;
+
+        document.body.appendChild(popup);
+    }
+
+    // Check if there's an error query parameter in the URL
+    const error = getQueryParam('error');
+    if (error) {
+        showErrorPopup(error);
+    }
+</script>
 </body>
 </html>
