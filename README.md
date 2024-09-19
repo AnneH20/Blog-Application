@@ -49,7 +49,6 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
    - Unit tests
    - Integration tests
 2. Add verification
-   - Must have a valid username to delete it (case-sensitive)
    - Must fill out all fields to create a new user/write a new article
    - Must have a valid username to write an article (case-sensitive)
 3. Add a search bar to search for articles (Will take some time to do)
