@@ -35,7 +35,7 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 - `user/delete` --> Delete a user
 - `/article/new` --> Create a new article
 - `/article/delete` --> Delete an article
-- `/article/{title-of-article}` --> View a specific article (use hyphens, - , between words)
+- `/article/{slug}` --> View a specific article (use hyphens, - , between words)
 
 ### Database information: 
 
