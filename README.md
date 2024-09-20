@@ -42,6 +42,22 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 - `/article/delete` --> Delete an article
 - `/article/{slug}` --> View a specific article (use hyphens, - , between words)
 
+
+## TODO:
+
+1. Add verification
+    - Must fill out all fields to create a new user/write a new article
+    - Must have a valid username to write an article (case-sensitive)
+2. Add update feature to update an article's content/a user's information
+3. Create tests that cover most of the code
+   - Postman tests
+   - Unit tests
+   - Integration tests
+4. Add a search bar to search for articles (Will take some time to do)
+
+
+## Notes
+
 <details>
 <summary>Database information</summary>
 
@@ -49,21 +65,6 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 - Username: blog
 
 </details>
-
-
-## TODO:
-
-1. Create tests that cover most of the code
-   - Postman tests
-   - Unit tests
-   - Integration tests
-2. Add verification
-   - Must fill out all fields to create a new user/write a new article
-   - Must have a valid username to write an article (case-sensitive)
-3. Add a search bar to search for articles (Will take some time to do)
-
-
-## Notes
 
 <details>
 <summary>Postgres Commands</summary>
