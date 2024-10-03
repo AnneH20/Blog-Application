@@ -58,6 +58,12 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 
 ## Notes
 
+When running the PostgreSQL, use `brew services start postgresql` to get your local Postgres running.
+
+If you are doing actual work (aka working on tickets), you need to stop your local Prosgres with `brew services stop postgresql`
+
+Using Postgres 14, so the commands might be something like `brew services start postgresql@14` and `brew services stop postgresql@14`
+
 <details>
 <summary>Database information</summary>
 
