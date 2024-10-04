@@ -22,10 +22,20 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
     - Display the first 5 words of an article in the description
     - If less than 5 words, display no description
 11. Migrated the project from H2 to Postgres (I hope!)
+    - Migrated the database from a local Postgres to a Dockerized Postgres
 12. Refactored to create `repository`, `service`, `model`, and `controller` packages
 13. Added validation for deleting a user/article (must have a valid username/title to delete)
 
 </details>
+
+## How to Run the Application
+
+1. Clone the repository if you haven't already haven't (`git clone <github link>`)
+2. Check to see if the Docker container is running (`docker ps`)
+    - If it is, stop the Docker container (`docker-compose down --remove-orphans`)
+    - If not, start the Docker container (`docker-compose up -d`)
+3. Start the application (click the green play button in IntelliJ)
+4. Go to `http://localhost:8080/` in your browser
 
 
 ## Navigation Links when running the application
@@ -49,42 +59,14 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
     - Must fill out all fields to create a new user/write a new article
     - Must have a valid username to write an article (case-sensitive)
 2. Add update feature to update an article's content/a user's information
-3. Migrate off of local Postgres DB to a docker container
-    - Backup the local PostgreSQL DB (`pg_dump -U blog -d blogDB -F c -f /[path]/[to]/[backup file name].sql`)
-    - Create a docker-compose.yml file to run the Postgres container
-       - ```
-         services:
-              db:
-                 image: postgres
-                 environment:
-                    POSTGRES_USER: blog
-                    POSTGRES_PASSWORD:
-                    POSTGRES_DB: blogDB
-                 ports:
-                    - "5432:5432"
-                 volumes:
-                    - pgdata:/var/lib/postgresql/data
-         ```
-    - Run the docker-compose file (`docker-compose up -d`)
-    - Check that docker is working properly and get the `container id` using (`docker ps`)
-    - Restore the backup to the Postgres container (`docker cp /[path]/[to]/[backup file name].sql [container id]:/[backup file name].sql`)
-    - Restore the DB from inside the container 
-      - Get bash shell (`docker exec -it [container id] bash`)
-      - Restore the backup (`pg_restore -U blog -d blogDB /[path]/[to]/[backup file name].sql`)
-4. Create tests that cover most of the code
+3. Create tests that cover most of the code
    - Postman tests
    - Unit tests
    - Integration tests
-5. Add a search bar to search for articles (Will take some time to do)
+4. Add a search bar to search for articles (Will take some time to do)
 
 
 ## Notes
-
-When running the PostgreSQL, use `brew services start postgresql` to get your local Postgres running.
-
-If you are doing actual work (aka working on tickets), you need to stop your local Prosgres with `brew services stop postgresql`
-
-Using Postgres 14, so the commands might be something like `brew services start postgresql@14` and `brew services stop postgresql@14`
 
 <details>
 <summary>Database information</summary>
@@ -95,7 +77,13 @@ Using Postgres 14, so the commands might be something like `brew services start 
 </details>
 
 <details>
-<summary>Postgres Commands</summary>
+<summary>Local Postgres Commands</summary>
+
+When running the PostgreSQL locally, use `brew services start postgresql` to get your local Postgres running.
+
+If you are doing actual work (aka working on tickets), you need to stop your local Prosgres with `brew services stop postgresql`
+
+Using Postgres 14, so the commands might be something like `brew services start postgresql@14` and `brew services stop postgresql@14`
 
 `brew instsall postgresql` --> install Postgresql using Brew
 
