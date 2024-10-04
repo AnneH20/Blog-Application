@@ -31,11 +31,15 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 ## How to Run the Application
 
 1. Clone the repository if you haven't already haven't (`git clone <github link>`)
-2. Check to see if the Docker container is running (`docker ps`)
+2. Check you Java and Maven versions (`java -version` and `mvn -version`)
+    - If you don't have Java or Maven, download them
+    - If you have them, make sure they are up-to-date (Java 17 or Java 22? and Maven 3.9.9)
+3. Check to see if the Docker container is running (`docker ps`)
     - If it is, stop the Docker container (`docker-compose down --remove-orphans`)
     - If not, start the Docker container (`docker-compose up -d`)
-3. Start the application (click the green play button in IntelliJ)
-4. Go to `http://localhost:8080/` in your browser
+4. Start the application (click the green play button in your IDE OR run `mvn spring-boot:run`)
+    - To stop the application, click the red square in your IDE OR run `mvn spring-boot:stop` OR `ctrl + c`)
+5. Go to `http://localhost:8080/` in your browser
 
 
 ## Navigation Links when running the application
