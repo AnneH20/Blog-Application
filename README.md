@@ -65,8 +65,8 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
    - [ ] Must have a valid existing username to write an article (case-sensitive)
    - [ ] When creating a new article, the title must be unique (content doesn't matter)
    - [ ] When creating a new user, the username must be unique
-   - [ ] Username must exist to delete a user
-   - [ ] Username must exist to delete an article
+   - [x] Username must exist to delete a user
+   - [x] Title must exist to delete an article
 2. Add update features
    - [ ] Update a user
         - Update First Name
