@@ -72,7 +72,7 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
         - Update First Name
         - Update Last Name
         - Update Username
-   - [ ] Update an article
+   - [x] Update an article
         - Update Title
         - Update Content
 3. Create tests that cover most of the code (Unknown if this is needed now)
