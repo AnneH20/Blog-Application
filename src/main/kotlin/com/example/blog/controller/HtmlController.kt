@@ -110,4 +110,24 @@ class HtmlController(
             redirectAttributes.addAttribute("error", e.message)
             "redirect:/article/delete"
         }
+
+    @GetMapping("/article/{slug}/edit")
+    fun showEditArticleForm(
+        @PathVariable slug: String,
+        model: Model,
+    ): String {
+        val article = articleService.findArticleBySlug(slug)
+        model.addAttribute("article", article)
+        return "editArticleForm"
+    }
+
+    @PostMapping("/article/{slug}/edit")
+    fun editArticle(
+        @PathVariable slug: String,
+        @RequestParam title: String,
+        @RequestParam content: String,
+    ): String {
+        articleService.updateArticle(slug, title, content)
+        return "redirect:/article/$slug"
+    }
 }

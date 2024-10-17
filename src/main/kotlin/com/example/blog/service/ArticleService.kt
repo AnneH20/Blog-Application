@@ -42,4 +42,17 @@ class ArticleService(
                 ?: throw IllegalArgumentException("Article not found")
         articleRepository.delete(article)
     }
+
+    fun updateArticle(
+        slug: String,
+        newTitle: String,
+        newContent: String,
+    ): ArticleDo {
+        val article =
+            articleRepository.findBySlug(slug)
+                ?: throw IllegalArgumentException("Article not found")
+        article.title = newTitle
+        article.content = newContent
+        return articleRepository.save(article)
+    }
 }
