@@ -55,6 +55,7 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 - `/article/new` --> Create a new article
 - `/article/delete` --> Delete an article
 - `/article/{slug}` --> View a specific article (use hyphens, - , between words)
+- `/article/{slug}/edit` --> Edit a specific article (use hyphens, - , between words)
 
 
 ## TODO:
