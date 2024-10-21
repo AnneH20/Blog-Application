@@ -70,6 +70,16 @@
         .button-container button:hover {
             background-color: #0056b3;
         }
+        .edit-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .edit-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -99,6 +109,7 @@
                 <header class="user-header">
                     <div class="username">{{username}}</div>
                     <div class="user-meta">{{firstName}} {{lastName}}</div>
+                    <button class="edit-button" onclick="window.location.href='/user/{{username}}/edit';">Edit User</button>
                 </header>
             </section>
         {{/users}}

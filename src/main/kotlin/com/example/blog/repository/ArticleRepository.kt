@@ -11,4 +11,6 @@ interface ArticleRepository : CrudRepository<ArticleDo, Long> {
     fun findByTitleIgnoreCase(title: String): ArticleDo?
 
     fun findAllByOrderByAddedAtDesc(): Iterable<ArticleDo>
+
+    fun findByAuthorUsername(username: String): List<ArticleDo>
 }
