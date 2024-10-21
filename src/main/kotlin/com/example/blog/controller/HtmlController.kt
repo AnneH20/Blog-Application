@@ -149,6 +149,6 @@ class HtmlController(
         @RequestParam content: String,
     ): String {
         articleService.updateArticle(slug, title, content)
-        return "redirect:/article/$slug"
+        return "redirect:/articles"
     }
 }

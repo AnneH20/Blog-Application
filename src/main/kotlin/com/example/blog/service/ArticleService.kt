@@ -3,6 +3,7 @@ package com.example.blog.service
 import com.example.blog.model.ArticleDo
 import com.example.blog.repository.ArticleRepository
 import com.example.blog.repository.UserRepository
+import com.example.blog.toSlug
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
@@ -55,6 +56,7 @@ class ArticleService(
         article.title = newTitle
         article.content = newContent
         article.addedAt = LocalDateTime.now()
+        article.slug = newTitle.toSlug()
 
         return articleRepository.save(article)
     }
