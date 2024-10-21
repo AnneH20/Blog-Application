@@ -95,6 +95,27 @@ class HtmlController(
             "redirect:/user/delete"
         }
 
+    @GetMapping("/user/{username}/edit")
+    fun showEditUserForm(
+        @PathVariable username: String,
+        model: Model,
+    ): String {
+        val user = userService.findUserByUsername(username)
+        model.addAttribute("user", user)
+        return "editUserForm"
+    }
+
+    @PostMapping("/user/{originalUsername}/edit")
+    fun editUser(
+        @PathVariable originalUsername: String,
+        @RequestParam updatedUsername: String,
+        @RequestParam firstName: String,
+        @RequestParam lastName: String,
+    ): String {
+        userService.updateUser(originalUsername, updatedUsername, firstName, lastName)
+        return "redirect:/users"
+    }
+
     @GetMapping("/article/delete")
     fun deleteArticleForm(): String = "deleteArticleForm"
 
