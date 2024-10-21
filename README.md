@@ -60,27 +60,31 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 
 ## TODO:
 
-1. Add verification
+1. Add validation
    - [ ] Must fill out all fields to create a new user
    - [ ] Must fill out all fields to create a new article
    - [ ] Must have a valid existing username to write an article (case-sensitive)
    - [ ] When creating a new article, the title must be unique (content doesn't matter)
    - [ ] When creating a new user, the username must be unique
+   - [ ] When editing a user/article, fields must also be valid
    - [x] Username must exist to delete a user
    - [x] Title must exist to delete an article
 2. Add update features
-   - [ ] Update a user
+   - [x] Update a user
         - Update First Name
         - Update Last Name
         - Update Username
    - [x] Update an article
         - Update Title
         - Update Content
-3. Create tests that cover most of the code (Unknown if this is needed now)
+   - [x] Update the article timestamp if an article is updated
+3. Implement a text editor to format blog articles
+   - [ ] Add a text editor (Rich or Markdown)
+4. Create tests that cover most of the code (Unknown if this is needed now)
    - Postman tests
    - Unit tests
    - Integration tests
-4. Add a search bar to search for articles (Will take some time to do)
+5. Add a search bar to search for articles (Will take some time to do)
 
 
 ## Notes
