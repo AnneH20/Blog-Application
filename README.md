@@ -26,6 +26,7 @@ Similar to something like this: https://javatechonline.com/spring-boot-mvc-crud-
 12. Refactored to create `repository`, `service`, `model`, and `controller` packages
 13. Added validation for deleting a user/article (must have a valid username/title to delete)
 
+![Dog](docs/doggos.JPG)
 </details>
 
 ## How to Run the Application
