@@ -1,10 +1,10 @@
 package com.example.blog.model
 
-data class RenderedArticleDTO(
+data class ArticleDTO(
     val slug: String,
     val title: String,
     val content: String,
     val description: String,
-    val author: RenderedUserDTO,
+    val author: UserDTO,
     val addedAt: String,
 )

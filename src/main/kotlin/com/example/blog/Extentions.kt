@@ -1,8 +1,8 @@
 package com.example.blog
 
+import com.example.blog.model.ArticleDTO
 import com.example.blog.model.ArticleDo
-import com.example.blog.model.RenderedArticleDTO
-import com.example.blog.model.RenderedUserDTO
+import com.example.blog.model.UserDTO
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -39,12 +39,12 @@ fun String.toSlug() =
         .replace("-+".toRegex(), "-")
 
 fun ArticleDo.render() =
-    RenderedArticleDTO(
+    ArticleDTO(
         slug,
         title,
         content,
         getFirstFiveWords(content),
-        RenderedUserDTO(author.firstName, author.lastName),
+        UserDTO(author.firstName, author.lastName),
         addedAt.format(),
     )
 
